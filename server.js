@@ -17,7 +17,7 @@ app.use(express.json());
 // Connexion MongoDB
 // ======================
 mongoose.connect(
-  "mongodb+srv://soui0564910670_db_user:WLMd27UNhrtyL7Q6@cluster0.n4p87yc.mongodb.net/?appName=Cluster0"
+  "mongodb+srv://Admin:motdepasse123@cluster0.n4p87yc.mongodb.net/?appName=Cluster0"
 )
 .then(() => {
   console.log("MongoDB connecté");
