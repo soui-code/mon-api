@@ -3,6 +3,18 @@ const cors = require("cors");
 
 const app = express();
 
+const deleteUser = async (index) => {
+  try {
+
+    await axios.delete(`${API}/users/${index}`);
+
+    getUsers();
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 app.use(cors());
 app.use(express.json());
 
