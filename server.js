@@ -3,18 +3,6 @@ const cors = require("cors");
 
 const app = express();
 
-const deleteUser = async (index) => {
-  try {
-
-    await axios.delete(`${API}/users/${index}`);
-
-    getUsers();
-
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 app.use(cors());
 app.use(express.json());
 
@@ -32,6 +20,7 @@ app.get("/users", (req, res) => {
 
 // POST
 app.post("/users", (req, res) => {
+
   const user = req.body;
 
   users.push(user);
@@ -40,10 +29,22 @@ app.post("/users", (req, res) => {
     message: "Utilisateur ajouté",
     data: user
   });
+
 });
 
+// DELETE
+app.delete("/users/:index", (req, res) => {
 
-// IMPORTANT POUR LE DEPLOIEMENT
+  const index = req.params.index;
+
+  users.splice(index, 1);
+
+  res.json({
+    message: "Utilisateur supprimé"
+  });
+
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
