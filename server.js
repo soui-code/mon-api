@@ -45,6 +45,19 @@ app.delete("/users/:index", (req, res) => {
 
 });
 
+//UPDATE
+app.put("/users/:index", (req, res) => {
+  const index = req.params.index;
+  const user = req.body;
+
+  users[index] = user;
+
+  res.json({
+    message: "Utilisateur mis à jour",
+    data: user
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
